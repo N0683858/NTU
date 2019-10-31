@@ -9,9 +9,11 @@ public:
 	void insert(Key, Item);
 	Item* lookup(Key);
 	BST() = default;
+	BST(const BST &);
 	void displayEntries();
 	void displayTree();
 	void removeNode(Key);
+	~BST();
 	
 
 private:
@@ -24,5 +26,8 @@ private:
 	void displayEntriesWorker(Node*);
 	void displayTreeWorker(Node*, std::string);
 	void removeNodeWorker(Key, Node*&);
+	Node* detachMinimumNode(Node* &);
+	void deepDelete(Node*);
+	static Node* deepCopy(Node*);
 };
 

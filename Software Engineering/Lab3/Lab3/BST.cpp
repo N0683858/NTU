@@ -107,20 +107,30 @@ BST::Item* BST::lookupRec(Key soughtKey, Node* currentNode)
 {
 	// worker definition goes here
 
-	if (soughtKey != currentNode->key)
+	if (isLeaf(currentNode))
 	{
-		if (isLeaf(currentNode)) {
-			return nullptr;
-		}
-		else if (currentNode->key < soughtKey)
-		{
-			return lookupRec(soughtKey, currentNode->rightChild);
-		}
-		else {
-			return lookupRec(soughtKey, currentNode->leftChild);
-		}
+		return nullptr;
 	}
-	return &currentNode->item;
+	else
+	{
+		if (soughtKey != currentNode->key)
+		{
+			 if (currentNode->key < soughtKey)
+			 {
+				 return lookupRec(soughtKey, currentNode->rightChild);
+			 }
+			else 
+			 {
+				return lookupRec(soughtKey, currentNode->leftChild);
+			 }
+		}
+		else 
+		{
+			return &currentNode->item;
+		}
+		
+	}
+	
 }
 
 void BST::displayEntries()
@@ -159,13 +169,22 @@ void BST::displayTreeWorker(Node* current, std::string indent) {
 		displayTreeWorker(current->rightChild, indent + "  ");
 	}
 }
-
+/////////////////////////
 void BST::removeNode(Key k)
 {
 	removeNodeWorker(k, root); 
 }
-
-
+////////////////////////////
+BST::BST(const BST & original) 
+{
+	this->root = deepCopy(original.root);
+}
+////////////////////////////
+BST::~BST()
+{
+	//deepDelete(root);
+}
+////////////////////////////
 void BST::removeNodeWorker(Key k, Node* &current)
 {
 	if (k != current->key)
@@ -200,6 +219,57 @@ void BST::removeNodeWorker(Key k, Node* &current)
 			delete current;
 			current = newNode;
 		}
+		else
+		{
+			Node* newNode = detachMinimumNode(current->rightChild);
+			newNode->leftChild = current->leftChild;
+			newNode->leftChild = current->rightChild;
+					   
+			delete current;
+			current = newNode;
+		}
 	}
-	
 }
+////////////////////////////////////////
+BST::Node* BST::detachMinimumNode(Node*& node)
+{
+	if (isLeaf(node->leftChild))
+	{
+		Node* copy = new Node(node->key, node->item);
+		removeNode(node->key);
+		node = nullptr;
+		return copy;
+	}
+	else
+	{
+		detachMinimumNode(node->leftChild);
+	}
+}
+///////////////////////////////////////
+void BST::deepDelete(Node* current)
+{
+	if (!isLeaf(current)) 
+	{
+		deepDelete(current->leftChild);
+		deepDelete(current->rightChild);
+		delete current;
+	}
+}
+////////////////////////////////////
+BST::Node* BST::deepCopy(Node* original)
+{
+	if (!isLeaf(original))
+	{
+		Node* newNode = new Node(original->key,original->item);
+		newNode->leftChild = deepCopy(original->leftChild);
+		newNode->rightChild = deepCopy(original->rightChild);
+		return newNode;
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+
+
