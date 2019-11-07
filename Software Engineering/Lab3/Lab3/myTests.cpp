@@ -68,15 +68,24 @@ BOOST_AUTO_TEST_CASE(delloate_removed_nodes)
 	BOOST_CHECK_EQUAL(newTree.lookup(9), nullptr);
 }
 
-BOOST_AUTO_TEST_CASE(deep_deleteing_shallow_copy)
+BOOST_AUTO_TEST_CASE(deep_deleteing_deep_copy)
 {
 	BST t1;
 	t1.insert(2, "Will");
 	BST t2 = t1;
 	t2.insert(3, "Mary");
 
-	BOOST_CHECK_NE(t1.lookup(3), nullptr);
-	BOOST_CHECK_EQUAL(*t1.lookup(3), "Mary");
+	BOOST_CHECK_EQUAL(t1.lookup(3), nullptr);
+}
+
+BOOST_AUTO_TEST_CASE(Operator)
+{
+	BST t1;
+	t1.insert(2, "will");
+	BST& t2 = t1;
+	t1.insert(3, "mary");
+
+	
 }
 
 

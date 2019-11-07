@@ -174,15 +174,24 @@ void BST::removeNode(Key k)
 {
 	removeNodeWorker(k, root); 
 }
-////////////////////////////
+
+//////////////////////////
 BST::BST(const BST & original) 
 {
 	this->root = deepCopy(original.root);
 }
+
+/////////////////////////////////
+BST & BST::operator=(const BST& original)
+{
+	this->root = original.root;
+	
+	return *this;
+}
 ////////////////////////////
 BST::~BST()
 {
-	//deepDelete(root);
+	deepDelete(root);
 }
 ////////////////////////////
 void BST::removeNodeWorker(Key k, Node* &current)

@@ -10,6 +10,7 @@ public:
 	Item* lookup(Key);
 	BST() = default;
 	BST(const BST &);
+	BST& operator=(const BST&);
 	void displayEntries();
 	void displayTree();
 	void removeNode(Key);
