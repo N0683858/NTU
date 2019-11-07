@@ -184,10 +184,24 @@ BST::BST(const BST & original)
 /////////////////////////////////
 BST & BST::operator=(const BST& original)
 {
-	this->root = original.root;
+	if (this == &original)
+	{
+		return *this;
+	}
+	else
+	{
+		this->deepDelete(root);
+		this->root = deepCopy(original.root);
+		return *this;
+	}
 	
-	return *this;
 }
+
+BST::BST(BST && original)
+{
+
+}
+
 ////////////////////////////
 BST::~BST()
 {

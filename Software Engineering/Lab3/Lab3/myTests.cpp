@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE(deep_deleteing_deep_copy)
 	BST t2 = t1;
 	t2.insert(3, "Mary");
 
-	BOOST_CHECK_EQUAL(t1.lookup(3), nullptr);
+	BOOST_CHECK_EQUAL(t1.lookup(3), nullptr);//deep copy so they shouldn't share nodes
 }
 
 BOOST_AUTO_TEST_CASE(Operator)
@@ -83,9 +83,10 @@ BOOST_AUTO_TEST_CASE(Operator)
 	BST t1;
 	t1.insert(2, "will");
 	BST& t2 = t1;
-	t1.insert(3, "mary");
+	t1.insert(3, "Mary");
 
-	
+	BOOST_CHECK_NE(t1.lookup(3), nullptr);
+	BOOST_CHECK_EQUAL(*t1.lookup(3), "Mary");//shallow copy so share nodes
 }
 
 

@@ -8,13 +8,14 @@ public:
 
 	void insert(Key, Item);
 	Item* lookup(Key);
-	BST() = default;
-	BST(const BST &);
-	BST& operator=(const BST&);
+	BST() = default; //defult constructor
+	BST(const BST &); // copy constructor
+	BST& operator=(const BST&); //copy assignment operator
+	BST(BST &&);
 	void displayEntries();
 	void displayTree();
 	void removeNode(Key);
-	~BST();
+	~BST(); //deconsructor
 	
 
 private:
