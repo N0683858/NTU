@@ -1,0 +1,5 @@
+﻿  AVL.cpp
+  main.cpp
+  Generating Code...
+C:\Users\raza-\Desktop\GitHub\NTU\NTU\Software Engineering\AVL Tree\Lab3\AVL.cpp(285): warning C4715: 'AVL::detachMinimumNode': not all control paths return a value
+  Lab3.vcxproj -> C:\Users\raza-\Desktop\GitHub\NTU\NTU\Software Engineering\AVL Tree\x64\Debug\Lab3.exe

@@ -1,8 +1,12 @@
-﻿#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 Basic chatbot design --- for your own modifications
 """
+from nltk.corpus import stopwords
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import TfidfVectorizer
+
 #######################################################
 # Initialise Wikipedia agent
 #######################################################
@@ -31,11 +35,41 @@ kern.setTextEncoding(None)
 # The optional brainFile argument specifies a brain file to load.
 kern.bootstrap(learnFiles="mybot-basic.xml")
 #######################################################
+#  Similarity
+#######################################################
+def SimilarityArray(string, searchArray):
+    array = [string] 
+    array_2 = array + searchArray
+    tfidf = TfidfVectorizer(stop_words='english').fit_transform(array_2)
+    similarityArray = cosine_similarity(tfidf[0:1], tfidf)
+    similarityArray = np.delete(similarityArray, 0)
+
+    return similarityArray
+
+#######################################################
+#  Reading CVS file
+#######################################################
+import csv
+
+def ReadingCSV(file):
+    with open(file) as csvfile:
+        readFile = csv.reader(csvfile, delimiter=',')
+        questions = []
+        answers = []
+        for row in readFile:
+            Q = row[0]
+            A = row[1]
+
+            questions.append(Q)
+            answers.append(A)
+            
+          
+        return questions, answers
+#######################################################
 # Welcome user
 #######################################################
-print("Welcome to the urban agriculture chat bot. Please feel free to ask questions about",
-      "concepts and methods in making your garden a food production site,  Permaculture,",
-      "Aquaponics, crops, the weather, or any plant images you might have.")
+print("Welcome to the League of Legends chat bot. Please feel free to ask questions about",
+      "Champions, Tiers and Devisions, or about the game terms in general.")
 #######################################################
 # Main loop
 #######################################################
@@ -65,25 +99,32 @@ while True:
                 print("Learn more at", wpage.canonicalurl)
             else:
                 print("Sorry, I don't know what that is.")
-        elif cmd == 2:
-            succeeded = False
-            api_url = r"http://api.openweathermap.org/data/2.5/weather?q="
-            response = requests.get(api_url + params[1] + r"&units=metric&APPID="+APIkey)
-            if response.status_code == 200:
-                response_json = json.loads(response.content)
-                if response_json:
-                    t = response_json['main']['temp']
-                    tmi = response_json['main']['temp_min']
-                    tma = response_json['main']['temp_max']
-                    hum = response_json['main']['humidity']
-                    wsp = response_json['wind']['speed']
-                    wdir = response_json['wind']['deg']
-                    conditions = response_json['weather'][0]['description']
-                    print("The temperature is", t, "°C, varying between", tmi, "and", tma, "at the moment, humidity is", hum, "%, wind speed ", wsp, "m/s,", conditions)
-                    succeeded = True
-            if not succeeded:
-                print("Sorry, I could not resolve the location you gave me.")
+        # elif cmd == 2:
+        #     succeeded = False
+        #     api_url = r"http://api.openweathermap.org/data/2.5/weather?q="
+        #     response = requests.get(api_url + params[1] + r"&units=metric&APPID="+APIkey)
+        #     if response.status_code == 200:
+        #         response_json = json.loads(response.content)
+        #         if response_json:
+        #             t = response_json['main']['temp']
+        #             tmi = response_json['main']['temp_min']
+        #             tma = response_json['main']['temp_max']
+        #             hum = response_json['main']['humidity']
+        #             wsp = response_json['wind']['speed']
+        #             wdir = response_json['wind']['deg']
+        #             conditions = response_json['weather'][0]['description']
+        #             print("The temperature is", t, "°C, varying between", tmi, "and", tma, "at the moment, humidity is", hum, "%, wind speed ", wsp, "m/s,", conditions)
+        #             succeeded = True
+        #     if not succeeded:
+        #         print("Sorry, I could not resolve the location you gave me.")
         elif cmd == 99:
-            print("I did not get that, please try again.")
+            # print("I did not get that, please try again.")
+            Question, Answer = ReadingCSV('Q&A_Pairs.txt')
+            arr = SimilarityArray(userInput, Question)
+            #get index of heighest value in arr
+            maxElement = np.argmax(arr)
+            #print out whatever is in the index of the answer
+            print(Answer[maxElement])
+            
     else:
         print(answer)

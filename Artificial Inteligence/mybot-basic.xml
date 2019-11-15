@@ -2,7 +2,7 @@
 
 <!-- Greetings and Politeness -->
 <category> <pattern> HELLO </pattern>
-  <template>Hello! How are you?</template> </category>
+  <template>Hello! What is your name?</template> </category>
 
 <category> <pattern> HELLO * </pattern>
   <template><srai>HELLO</srai></template> </category>
@@ -13,14 +13,170 @@
 <category> <pattern> HI * </pattern>
   <template><srai>HELLO</srai></template> </category>
 
+<category> <pattern> HEY * </pattern>
+  <template><srai>HELLO</srai></template> </category>
+
+<category>
+  <pattern>WHO ARE YOU</pattern>
+  <template>I am an AI chatbot called Alice who is knowlegeable about League of Legends</template>
+</category>
+
+<category>
+  <pattern>WHAT IS YOUR NAME * </pattern>
+  <template><srai>WHO ARE YOU</srai></template>
+</category>
+
+<category>
+  <pattern>MY NAME IS * </pattern>
+  <template>
+    Hello  <star/>! What would you like to know?<set name="nameUser"></set>
+  </template>
+</category>
+
 <category> <pattern> HOW ARE YOU </pattern>
   <template>I'm functioning within normal parameters, thanks for asking.</template></category>
 
 <category><pattern> I AM FINE </pattern>
-  <template>That's good to know. What would you like to discuss regarding urban agriculture?</template></category>
+  <template>That's good to know. What would you like to discuss regarding League of Legends?</template></category>
 
+<category> <pattern> I'M FINE * </pattern>
+  <template><srai>I AM FINE</srai></template> </category>
+
+<!-- FAQ -->
+<category>
+  <pattern>HOW DO I PLAY LEAGUE OF LEGENDS</pattern>
+  <template>Step 1: Create an account on the official website. Step 2: Download/Install the game. Step 3: Login and play</template>
+</category>
+
+<category>
+  <pattern>HOW DO I PLAY *</pattern>
+  <template><srai>HOW DO I PLAY LEAGUE OF LEGENDS</srai></template>
+</category>
+
+<category>
+  <pattern>WHAT ARE CHAMPIONS</pattern>
+  <template>Champions are the player-controlled character in League of Legends. Each champion possesses unique abilities and attributes.</template>
+</category>
+
+<category>
+  <pattern>* CHAMPIONS</pattern>
+  <template><srai>WHAT ARE CHAMPIONS</srai></template>
+</category>
+
+<category>
+  <pattern>WHAT ARE THE CHAMPION CLASSES </pattern>
+  <template>There are 6 type of Champions: Tanks, Fighters, Slayers, Mages, Controllers and Marksman </template>
+</category>
+
+<category>
+  <pattern>_ CLASSES *</pattern>
+  <template><srai>WHAT ARE THE CHAMPION CLASSES</srai> </template>
+</category>
+
+<category>
+  <pattern>HOW MANY CHAMPIONS ARE THERE IN LEAGUE OF LEGENDS</pattern>
+  <template>There are currently 145 Champions as of 2019</template>
+</category>
+
+<category>
+  <pattern>WHAT ARE THE TOTAL NUMBER OF CHAMPIONS *</pattern>
+  <template><srai>HOW MANY CHAMPIONS ARE THERE IN LEAGUE OF LEGENDS</srai></template>
+</category>
+
+<category>
+  <pattern>WHAT ARE THE CHAMPION ROLES</pattern>
+  <template>Each champion has a specific role(s) in the team which are; Top laner; Jungler; Mid laner;
+    Bot (Bottom) laner and Support.</template>
+</category>
+
+<category>
+  <pattern>* CHAMPION ROLES </pattern>
+  <template><srai>WHAT ARE THE CHAMPION ROLES</srai></template>
+</category>
+
+<category>
+  <pattern>WHAT ARE TIER AND DEVISIONS</pattern>
+  <template>There are 10 Teirs and each Tier is further divided into four devisions (4 being the lowest). The 10 tiers are;
+    Unranked, Iron, Bronze, Silver, Gold, Platnium, Diamond, Master, Grandmaster and Challenger 
+    (Iron being lowest tier and unranked meaning you don't have enough LP to be ranked).</template>
+</category>
+
+<category>
+  <pattern>_ TIERS *</pattern>
+  <template><srai>WHAT ARE TIER AND DEVISIONS</srai></template>
+</category>
+
+<category>
+  <pattern>_ DEVISIONS *</pattern>
+  <template><srai>WHAT ARE TIER AND DEVISIONS</srai></template>
+</category>
+
+<category>
+  <pattern>WHAT IS LP</pattern>
+  <template>Players earn League Points (LP) when they win ranked games and lose them when they 
+  lose ranked games.</template>
+</category>
+
+<category>
+  <pattern>_ LP *</pattern>
+  <template><srai>WHAT IS LP</srai></template>
+</category>
+
+<category>
+  <pattern>WHAT IS YOUR FAVOURITE CHAMPION</pattern>
+  <template><random>
+    <li>My favourite champion is Akalai. What is your favourite champion?</li>
+    <li>My favourite champion is Katarina. What is your favourite champion?</li>
+  </random></template>
+</category>
+
+<category>
+  <pattern>MY FAVOURITE CHAMPION IS * </pattern>
+  <template>
+    <set name="champName"> <star/> is a very strong champion</set>
+  </template>
+</category>
+
+<category>
+  <pattern>WHAT IS YOUR FAVOURITE ROLE</pattern>
+  <template>
+    <random>
+      <li>My favourite role is Top laner</li>
+      <li>My favourite role is Mid laner</li>
+      <li>My favourite role is Support</li>
+    </random>
+  </template>
+</category>
+
+<category>
+  <pattern>WHAT IS YOUR FAVOURITE CLASS</pattern>
+  <template>My favourite class in the sub class of the 'Slayers' class called 'Assassins'.</template>
+</category>
+
+<category>
+  <pattern>WHAT IS KS</pattern>
+  <template>KS means kill steal so when someone finishes an enemy just before you was about to finish them and steals the kill from you</template>
+</category>
+
+<category>
+  <pattern>WHAT DOES OP MEAN</pattern>
+  <template>OP means a champion which is over powered,in other words very strong</template>
+</category>
+
+<category>
+  <pattern>WHAT IS THE RECOMMENDED TEAM COMPOSITION </pattern>
+  <template>The recommended team composition for a team full of beginners is to have a champion to fill each role. 
+  1 champion for top lane; 1 for mid lane; 1 for jungle, 1 for bot lane and 1 for support</template>
+</category>
+
+<category>
+  <pattern></pattern>
+  <template></template>
+</category>
+
+<!-- Goodbye/Exit -->
 <category><pattern> BYE </pattern>
-  <template>#0$Bye! Nice talking to you. You take care now.</template></category>
+  <template>#0$Bye! Nice talking to you <get name="nameUser"/>. You take care now.</template></category>
 
 <category><pattern> GOODBYE </pattern>
   <template><srai>BYE</srai></template></category>
@@ -40,7 +196,7 @@
 <category> <pattern> CHEERS * </pattern>
   <template>Sure mate.</template></category>
 
-<!-- Weather API -->
+  <!-- Weather API -->
 <category><pattern> WHAT IS THE WEATHER LIKE IN * </pattern>
   <template>#2$<star/></template></category>
 
