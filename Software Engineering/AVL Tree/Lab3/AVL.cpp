@@ -8,6 +8,7 @@ struct AVL::Node
 	Item item;
 	Node* leftChild;
 	Node* rightChild;
+	int balanceFactor = 0;
 
 	Node(Key k, Item i) {
 		key = k;

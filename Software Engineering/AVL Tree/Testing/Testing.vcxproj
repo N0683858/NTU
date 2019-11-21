@@ -125,14 +125,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Lab3\BST.cpp" />
+    <ClCompile Include="..\Lab3\AVL.cpp" />
     <ClCompile Include="..\Lab3\myTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Lab3\BST.h" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ClInclude Include="..\Lab3\AVL.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
