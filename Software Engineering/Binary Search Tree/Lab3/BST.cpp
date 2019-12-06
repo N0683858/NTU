@@ -175,12 +175,14 @@ void BST::removeNode(Key k)
 	removeNodeWorker(k, root); 
 }
 
+//Copy
 //////////////////////////
 BST::BST(const BST & original) 
 {
 	this->root = deepCopy(original.root);
 }
 
+//Copy Assigbemnt
 /////////////////////////////////
 BST & BST::operator=(const BST& original)
 {
@@ -196,12 +198,14 @@ BST & BST::operator=(const BST& original)
 	}
 	
 }
+//Move 
 ///////////////////////////
 BST::BST(BST && original)
 {
 	this->root = original.root;
 	original.root = nullptr;
 }
+//Move Assignment 
 ////////////////////////////
 BST& BST::operator=(BST&& original)
 {
