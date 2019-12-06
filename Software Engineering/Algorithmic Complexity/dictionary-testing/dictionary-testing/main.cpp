@@ -33,7 +33,7 @@ milliseconds timingTest_map(unsigned long long int n, unsigned int dicSize)
 
    map<int,string> dict = {};
 
-   for (unsigned long long int i = 0; dicSize < n; ++i)
+   for (unsigned long long int i = 0; i < dicSize; ++i)
    {
        dict.insert(make_pair(gen.randomKey(),gen.randomItem()));
        /* Note: std::map::insert() differs slightly from BST::insert(),
@@ -43,7 +43,7 @@ milliseconds timingTest_map(unsigned long long int n, unsigned int dicSize)
 
    steady_clock::time_point startTime = steady_clock::now();
 
-   for (unsigned long long int i = 0; dicSize < n; ++i)
+   for (unsigned long long int i = 0; i < n; ++i)
    {
        dict.find(gen.randomKey());
        /* Note: std::map::find() differs slightly from BST::lookup(),
@@ -59,13 +59,13 @@ milliseconds timingTest_map(unsigned long long int n, unsigned int dicSize)
 
 int main()
 {
-    const unsigned long long int n = 4300000;
-	int dicSize = 300;
+    const unsigned long long int n = 1500000;
+	int dicSize = 1000000;
 
     milliseconds timeTaken = timingTest_map(n, dicSize);
 
     cout << "Data structure: std::map (red-black tree)" << endl;
-    cout << "Testing " << n << " random lookups in a dictionary containing " << n << " random entries." << endl;
+    cout << "Testing " << n << " random lookups in a dictionary containing " << dicSize << " random entries." << endl;
     cout << "Time taken: " << timeTaken.count() << " milliseconds." << endl;
 
     return 0;
