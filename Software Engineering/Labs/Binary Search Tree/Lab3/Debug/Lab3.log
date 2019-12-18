@@ -1,0 +1,5 @@
+﻿  BST.cpp
+  main.cpp
+  Generating Code...
+C:\Users\raza-\Desktop\GitHub\NTU\NTU\Software Engineering\Lab3\Lab3\BST.cpp(247): warning C4715: 'BST::detachMinimumNode': not all control paths return a value
+  Lab3.vcxproj -> C:\Users\raza-\Desktop\GitHub\NTU\NTU\Software Engineering\Lab3\Debug\Lab3.exe
