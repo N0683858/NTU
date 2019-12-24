@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "330730460682",
+    "firebase_url": "https://sporty-3e0c2.firebaseio.com",
+    "project_id": "sporty-3e0c2",
+    "storage_bucket": "sporty-3e0c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330730460682:android:4d2c29dbbde824c04af1f3",
+        "android_client_info": {
+          "package_name": "com.hamidraza.sporty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330730460682-2nstkpsaf24bkv991h474qqf4v8c1lh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEJlQBLGdAnJjhklQ622awhFM8CPi7fIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330730460682-2nstkpsaf24bkv991h474qqf4v8c1lh0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
