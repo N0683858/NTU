@@ -29,13 +29,12 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     //UI interface variables
-    private AutoCompleteTextView userNameTV;
-    private AutoCompleteTextView emailTV;
-    private EditText passwordTV;
-    private EditText confirmPasswordTV;
+    private AutoCompleteTextView userNameTextView;
+    private AutoCompleteTextView emailTextView;
+    private EditText passwordTextView;
+    private EditText confirmPasswordTextView;
 
-    //Fire-base Instance variable
-    // used to communicate with firebase user login data (authorise user)
+    // Handles user registration and authentication
     private FirebaseAuth mAuth;
 
     @Override
@@ -43,12 +42,12 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        userNameTV = findViewById(R.id.register_username);
-        emailTV = findViewById(R.id.register_email);
-        passwordTV = findViewById(R.id.register_password);
-        confirmPasswordTV = findViewById(R.id.register_confirm_password);
+        userNameTextView = findViewById(R.id.register_username);
+        emailTextView = findViewById(R.id.register_email);
+        passwordTextView = findViewById(R.id.register_password);
+        confirmPasswordTextView = findViewById(R.id.register_confirm_password);
 
-        confirmPasswordTV.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        confirmPasswordTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {// when user presses enter it will run the attemptRegistration() method
 
@@ -70,12 +69,12 @@ public class SignUpActivity extends AppCompatActivity {
     private void attemptRegisteration()
     {
         // Reset errors displayed
-        emailTV.setError(null);
-        passwordTV.setError(null);
+        emailTextView.setError(null);
+        passwordTextView.setError(null);
 
         //store values at the time of login
-        String email = emailTV.getText().toString();
-        String passwaord = passwordTV.getText().toString();
+        String email = emailTextView.getText().toString();
+        String passwaord = passwordTextView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -85,22 +84,22 @@ public class SignUpActivity extends AppCompatActivity {
         // isPasswordValid() is a custom function which makes sure the password is longer than 4 characters long
         if(TextUtils.isEmpty(passwaord) || !isPasswordValid(passwaord))
         {
-            passwordTV.setError("Password too short or does not match!"); //show pop-up error message
-            focusView = passwordTV;
+            passwordTextView.setError("Password too short or does not match!"); //show pop-up error message
+            focusView = passwordTextView;
             cancel = true; // dont attempt registration
         }
 
         // check if the email is valid
         if(TextUtils.isEmpty(email))
         {
-            emailTV.setError("This field cannot be left empty!");
-            focusView = emailTV;
+            emailTextView.setError("This field cannot be left empty!");
+            focusView = emailTextView;
             cancel = true;
         }
         else if (!isEmailValid(email))
         {
-            emailTV.setError("This email address in invalid!");
-            focusView = emailTV;
+            emailTextView.setError("This email address in invalid!");
+            focusView = emailTextView;
             cancel = true;
         }
 
@@ -113,27 +112,34 @@ public class SignUpActivity extends AppCompatActivity {
         }
         else
         {
-            createFirebaseUser();
+            createFirebaseUser(); // if there was no errors, create user in firebase
         }
     }
 
     private boolean isEmailValid(String email)
     {
-        return email.contains("@"); // will check if the email string contains '@' symbol and return true, else return false
+        // will check if the email string contains '@' symbol and return true, else return false
+        return email.contains("@");
     }
 
     private boolean isPasswordValid(String password)
     {
-        String confirmPassword = confirmPasswordTV.getText().toString();
-        return confirmPassword.equals(password) && password.length() > 4; // 'confirm password' matches the the password and is more than 4 characters long
+        String confirmPassword = confirmPasswordTextView.getText().toString();
+        // 'confirm password' matches the the password and is more than 4 characters long
+        return confirmPassword.equals(password) && password.length() > 4;
     }
 
     // Create fire-base user
     private void createFirebaseUser()
     {
-        String email = emailTV.getText().toString();
-        String password = passwordTV.getText().toString();
+        String email = emailTextView.getText().toString();
+        String password = passwordTextView.getText().toString();
 
+        // Saving the details (register them by email and password) of the new created user
+        // into the firebase database using mAuth object
+        // this method returns a task which can be used to listen to that event which is being created.
+        // This listener with onComplete() method will report back if the new user has been successfully
+        // been created on the firebase database or not
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -144,6 +150,7 @@ public class SignUpActivity extends AppCompatActivity {
                 {
                     FirebaseAuthException e = (FirebaseAuthException)task.getException();
                     Log.d("Flashchat", "user creation failed" + e.getMessage());
+                    // Show error dialog to show the user the registration was not successful
                     showErrorDialog("Registration Failed!");
                 }
                 else
@@ -161,7 +168,7 @@ public class SignUpActivity extends AppCompatActivity {
     private void saveDisplayName()
     {
         FirebaseUser user = mAuth.getCurrentUser();
-        String displayName = userNameTV.getText().toString();
+        String displayName = userNameTextView.getText().toString();
 
         if (user !=null) {
             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
