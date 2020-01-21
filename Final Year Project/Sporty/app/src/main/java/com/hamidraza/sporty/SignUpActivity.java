@@ -144,12 +144,12 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                Log.d("Flashchat", "createUser onComplete: " + task.isSuccessful());
+                Log.d("SignUp", "createUser onComplete: " + task.isSuccessful());
 
                 if(!task.isSuccessful())
                 {
                     FirebaseAuthException e = (FirebaseAuthException)task.getException();
-                    Log.d("Flashchat", "user creation failed" + e.getMessage());
+                    Log.d("SignUp", "user creation failed" + e.getMessage());
                     // Show error dialog to show the user the registration was not successful
                     showErrorDialog("Registration Failed!");
                 }
@@ -180,7 +180,7 @@ public class SignUpActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Log.d("FlashChat", "User name updated.");
+                                Log.d("SignUp", "User name updated.");
                             }
                         }
                     });
