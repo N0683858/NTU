@@ -1,11 +1,12 @@
 package com.hamidraza.sporty;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -20,6 +21,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // ToolBar
+        Toolbar toolbar = findViewById(R.id.toolbar1);
+        setSupportActionBar(toolbar); // replace toolbar as the ActionBar
 
         // Assign CardView
         searchSportCardView = findViewById(R.id.search_sport_card);
@@ -52,10 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, ChatRoom.class);
                 startActivity(intent);
                 break;
-//            case R.id.temp_card3:
-//                intent = new Intent(this, temp3.class);
-//                startActivity(intent);
-//                break;
+            case R.id.temp_card3:
+                intent = new Intent(this, Main2Activity.class);
+                startActivity(intent);
+                break;
             default: break;
         }
 

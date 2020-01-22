@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
     {
         // sends user to the register page
         Intent intent = new Intent(this, SignUpActivity.class);
-        finish();
         startActivity(intent);
 
     }

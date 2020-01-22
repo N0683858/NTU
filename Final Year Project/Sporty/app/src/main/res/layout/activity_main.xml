@@ -6,15 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:padding="10dp">
+    >
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/toolbar1"
+        app:title="SPORTY"
+        app:titleTextColor="@color/backgroundColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="?attr/actionBarTheme"
+        android:layout_marginBottom="20dp"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +27,7 @@
         android:gravity="center"
         android:clipToPadding="false">
         <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
+            android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
             android:id="@+id/search_sport_card"
             android:layout_width="160dp"
@@ -64,7 +68,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
+            android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
             android:id="@+id/chat_card"
             android:layout_width="160dp"
@@ -112,7 +116,7 @@
         android:gravity="center"
         android:clipToPadding="false">
         <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
+            android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
             android:id="@+id/temp1_card"
             android:layout_width="160dp"
@@ -152,7 +156,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
+            android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
             android:id="@+id/temp2_card"
             android:layout_width="160dp"
@@ -200,7 +204,7 @@
         android:gravity="center"
         android:clipToPadding="false">
         <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
+            android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
             android:id="@+id/temp_card3"
             android:layout_width="340dp"
