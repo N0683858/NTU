@@ -79,7 +79,7 @@
             <androidx.cardview.widget.CardView
                 android:foreground="?attr/selectableItemBackground"
                 android:clickable="true"
-                android:id="@+id/chat_card"
+                android:id="@+id/club_card"
                 android:layout_width="160dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp">
@@ -95,14 +95,14 @@
                         android:layout_height="64dp"
                         android:background="@drawable/pinkcircle"
                         android:padding="12dp"
-                        android:src="@drawable/ic_forum_black_24dp" />
+                        android:src="@drawable/search" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/righteous"
-                        android:text="Chat"
+                        android:text="@string/club"
                         android:textColor="@android:color/background_dark"
                         android:textStyle="bold" />
 
@@ -117,7 +117,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Talk to fellow users"
+                        android:text="Local club information"
                         android:textColor="@android:color/darker_gray" />
 
                 </LinearLayout>
@@ -133,7 +133,7 @@
             <androidx.cardview.widget.CardView
                 android:foreground="?attr/selectableItemBackground"
                 android:clickable="true"
-                android:id="@+id/temp1_card"
+                android:id="@+id/quickMatch_card"
                 android:layout_width="160dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp">
@@ -154,7 +154,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/righteous"
-                        android:text="Sport"
+                        android:text="Quick Match"
                         android:textColor="@android:color/background_dark"
                         android:textStyle="bold" />
                     <View
@@ -166,7 +166,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Sport Information"
+                        android:text="Quick match in your local area"
                         android:padding="5dp"
                         android:textColor="@android:color/darker_gray"/>
 
@@ -175,7 +175,7 @@
             <androidx.cardview.widget.CardView
                 android:foreground="?attr/selectableItemBackground"
                 android:clickable="true"
-                android:id="@+id/temp2_card"
+                android:id="@+id/sportFacilities_card"
                 android:layout_width="160dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp">
@@ -188,7 +188,7 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/pinkcircle"
-                        android:src="@drawable/ic_forum_black_24dp"
+                        android:src="@drawable/search"
                         android:padding="12dp"/>
 
                     <TextView
@@ -196,7 +196,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/righteous"
-                        android:text="Chat"
+                        android:text="Sport Facilities"
                         android:textColor="@android:color/background_dark"
                         android:textStyle="bold" />
                     <View
@@ -208,7 +208,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Talk to fellow users"
+                        android:text="Local Sport Facilities"
                         android:padding="5dp"
                         android:textColor="@android:color/darker_gray"/>
 
@@ -239,7 +239,7 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/pinkcircle"
-                        android:src="@drawable/ic_forum_black_24dp"
+                        android:src="@drawable/search"
                         android:padding="12dp"/>
 
                     <TextView

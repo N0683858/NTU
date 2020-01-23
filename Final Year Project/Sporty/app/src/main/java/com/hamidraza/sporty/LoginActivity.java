@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else
                 {// if its successful navigate the user to the main activity
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, Main2Activity.class);
                     finish();
                     startActivity(intent);
                 }
