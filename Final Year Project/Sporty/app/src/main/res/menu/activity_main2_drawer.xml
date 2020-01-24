@@ -20,6 +20,7 @@
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/menu_tools" />
+
     </group>
 
     <item android:title="Communicate">
@@ -32,6 +33,10 @@
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_send" />
+            <item
+                android:id="@+id/nav_logOut"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="@string/logout" />
         </menu>
     </item>
 

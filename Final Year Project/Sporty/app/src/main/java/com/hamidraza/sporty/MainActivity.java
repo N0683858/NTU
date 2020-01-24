@@ -50,16 +50,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId())
         {
             case R.id.search_sport_card:
-                intent = new Intent(this, SportsInfo.class);
-                startActivity(intent);
+                //intent = new Intent(this, SportsInfo.class);
+               // startActivity(intent);
                 break;
             case R.id.chat_card:
-                intent = new Intent(this, ChatRoom.class);
-                startActivity(intent);
+              //  intent = new Intent(this, ChatRoom.class);
+               // startActivity(intent);
                 break;
             case R.id.temp_card3:
-                intent = new Intent(this, Main2Activity.class);
-                startActivity(intent);
+              //  intent = new Intent(this, Main2Activity.class);
+             //   startActivity(intent);
                 break;
             default: break;
         }

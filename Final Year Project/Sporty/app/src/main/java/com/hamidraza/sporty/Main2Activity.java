@@ -9,12 +9,15 @@ import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
 
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.hamidraza.sporty.ui.gallery.GalleryFragment;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -34,6 +37,7 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -49,13 +53,15 @@ public class Main2Activity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_tools, R.id.nav_share, R.id.nav_send, R.id.nav_logOut)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        toolbar.setTitle("SPORTY");// Changing toolbar default title
+        toolbar.setTitleTextAppearance(this,R.style.RighteousTextAppearance);// Changing toolbar default font
     }
 
     @Override
@@ -74,14 +80,23 @@ public class Main2Activity extends AppCompatActivity {
 
     public void sportCardClicked(View view)
     {
-        Intent intent = new Intent(this, SportsInfo.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, SportsInfo.class);
+       // startActivity(intent);
+
+        //Create new fragment and transaction
+        Fragment newFragment = new SportInfo();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.nav_host_fragment, newFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
     }
 
     public void chatCardClicked(View view)
     {
-        Intent intent = new Intent(this, ChatRoom.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, ChatRoom.class);
+       // startActivity(intent);
     }
 
 }

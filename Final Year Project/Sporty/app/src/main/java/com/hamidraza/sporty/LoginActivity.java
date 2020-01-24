@@ -39,16 +39,16 @@ public class LoginActivity extends AppCompatActivity {
         passwordTextView = findViewById(R.id.register_password);
 
         //if user presses enter on their keyboard it should attempt to login
-        passwordTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-
-                Log.d("Login", "Enter pressed");
-                attemptLogin();
-
-                return false;
-            }
-        });
+//        passwordTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+//
+//                Log.d("Login", "Enter pressed");
+//                attemptLogin();
+//
+//                return false;
+//            }
+//        });
 
         // get instance from fire-base
         mAuth = FirebaseAuth.getInstance();

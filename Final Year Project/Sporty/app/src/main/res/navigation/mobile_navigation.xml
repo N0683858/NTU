@@ -40,4 +40,10 @@
         android:name="com.hamidraza.sporty.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
+
+    <fragment
+        android:id="@+id/nav_logOut"
+        android:name="com.hamidraza.sporty.LogOut"
+        android:label="@string/logout"
+        tools:layout="@layout/fragment_log_out" />
 </navigation>

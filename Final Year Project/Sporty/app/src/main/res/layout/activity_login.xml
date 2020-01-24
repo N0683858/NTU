@@ -73,7 +73,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="32dp"
         android:gravity="bottom"
         android:orientation="vertical"
         android:paddingLeft="10dp"
@@ -99,7 +99,7 @@
             android:id="@+id/sign_up_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/signup_btn"
             android:onClick="registerNewUser"
             android:text="@string/button_sign_up"
