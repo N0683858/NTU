@@ -40,4 +40,10 @@
         android:name="com.example.nturecruitment.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
+
+    <fragment
+        android:id="@+id/nav_qr_scanner"
+        android:name="com.example.nturecruitment.ui.qr_scanner.QR_Scanner"
+        android:label="@string/qr_scanner"
+        tools:layout="@layout/fragment_qr__scanner" />
 </navigation>

@@ -28,4 +28,9 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="recruitment">Recruitment</string>
+    <string name="menu_bookmarks">menu_bookmarks</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="qr_scanner">QR Scanner</string>
 </resources>

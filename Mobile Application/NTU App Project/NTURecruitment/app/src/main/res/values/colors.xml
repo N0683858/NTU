@@ -7,5 +7,6 @@
     <color name="ntuColorAccent">#004877</color>
     <color name="baseColor">#515151</color>
     <color name="lightGray">#E4E4E4</color>
+    <color name="white">#fcfcfc</color>
     <color name="techColor">#009ADD</color>
 </resources>

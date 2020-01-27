@@ -46,15 +46,17 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_tools, R.id.nav_share, R.id.nav_send, R.id.nav_qr_scanner)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        toolbar.setLogo(R.drawable.ic_ntu_logo);
-        toolbar.setTitle("Recruitment");
+        // toolbar.setTitle("Recruitment");
+        toolbar.setBackgroundColor(getResources().getColor(R.color.baseColor));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        drawer.setStatusBarBackgroundColor(getResources().getColor(R.color.baseColor));
     }
 
     @Override

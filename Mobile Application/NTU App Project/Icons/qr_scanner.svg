@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 23.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-49 141 512 512" style="enable-background:new -49 141 512 512;" xml:space="preserve">
+<g>
+	<path style="fill:#414042;" d="M311,165H103c-17.673,0-32,14.327-32,32v16h272v-16C343,179.327,328.673,165,311,165z"/>
+	<path style="fill:#414042;" d="M71,597c0,17.673,14.327,32,32,32h208c17.673,0,32-14.327,32-32v-16H71V597z"/>
+</g>
+<path style="fill:#414042;" d="M135,325h16v16h-16V325z"/>
+<path style="fill:#414042;" d="M135,453h16v16h-16V453z"/>
+<path style="fill:#414042;" d="M263,325h16v16h-16V325z"/>
+<g>
+	<path style="fill:#231F20;" d="M311,157H103c-22.08,0.026-39.974,17.92-40,40v400c0.026,22.08,17.92,39.974,40,40h208
+		c22.08-0.026,39.974-17.92,40-40V197C350.974,174.92,333.08,157.026,311,157z M79,221h256v352H79V221z M103,173h208
+		c13.255,0,24,10.745,24,24v8H79v-8C79,183.745,89.745,173,103,173z M311,621H103c-13.255,0-24-10.745-24-24v-8h256v8
+		C335,610.255,324.255,621,311,621z"/>
+	<path style="fill:#231F20;" d="M175,197h8c4.418,0,8-3.582,8-8s-3.582-8-8-8h-8c-4.418,0-8,3.582-8,8S170.582,197,175,197z"/>
+	<path style="fill:#231F20;" d="M207,197h32c4.418,0,8-3.582,8-8s-3.582-8-8-8h-32c-4.418,0-8,3.582-8,8S202.582,197,207,197z"/>
+	<path style="fill:#231F20;" d="M223,597h-32c-4.418,0-8,3.582-8,8s3.582,8,8,8h32c4.418,0,8-3.582,8-8S227.418,597,223,597z"/>
+	<path style="fill:#231F20;" d="M183,293h-80v80h80V293z M167,357h-48v-48h48V357z"/>
+	<path style="fill:#231F20;" d="M127,317h32v32h-32V317z"/>
+	<path style="fill:#231F20;" d="M103,501h80v-80h-80V501z M119,437h48v48h-48V437z"/>
+	<path style="fill:#231F20;" d="M127,445h32v32h-32V445z"/>
+	<path style="fill:#231F20;" d="M231,293v80h80v-80H231z M295,357h-48v-48h48V357z"/>
+	<path style="fill:#231F20;" d="M255,317h32v32h-32V317z"/>
+	<path style="fill:#231F20;" d="M119,405h8v-16h-8v-8h-16v32h16V405z"/>
+	<path style="fill:#231F20;" d="M191,293h32v16h-32V293z"/>
+	<path style="fill:#231F20;" d="M199,317v32h24v-16h-8v-16H199z"/>
+	<path style="fill:#231F20;" d="M295,445h-32v16h-8v-24h-48v-40h8v-40h-24v16h8v24h-16v-16h-48v32h16v-16h24v16h16v40h48v24h40v-16
+		h32v-48h-16V445z"/>
+	<path style="fill:#231F20;" d="M191,485h48v16h-48V485z"/>
+	<path style="fill:#231F20;" d="M295,485h-48v16h64v-32h-16V485z"/>
+	<path style="fill:#231F20;" d="M215,413h16v16h-16V413z"/>
+	<path style="fill:#231F20;" d="M239,413h16v16h-16V413z"/>
+	<path style="fill:#231F20;" d="M263,413h16v24h-16V413z"/>
+	<path style="fill:#231F20;" d="M191,461h40v16h-40V461z"/>
+	<path style="fill:#231F20;" d="M223,381v24h32v-16h-16v-8H223z"/>
+	<path style="fill:#231F20;" d="M295,389h-16v-8h-16v24h48v-24h-16V389z"/>
+</g>
+</svg>
