@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="ntuPink"> #e8005A</color>
+    <color name="ntuColorAccent">#004877</color>
+    <color name="baseColor">#515151</color>
+    <color name="lightGray">#E4E4E4</color>
+    <color name="white">#fcfcfc</color>
+    <color name="techColor">#009ADD</color>
+</resources>
