@@ -38,7 +38,7 @@
             android:layout_marginBottom="10dp">
 
             <AutoCompleteTextView
-                android:id="@+id/userName"
+                android:id="@+id/userName_EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/password_EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
@@ -90,7 +90,6 @@
             android:layout_gravity="center"
             android:background="@drawable/login_btn"
             android:fontFamily="@font/poppins_medium"
-            android:onClick="attemptLogin"
             android:text="@string/button_login"
             android:textColor="@android:color/white" />
 
