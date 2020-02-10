@@ -90,6 +90,7 @@
             android:layout_gravity="center"
             android:background="@drawable/login_btn"
             android:fontFamily="@font/poppins_medium"
+            android:onClick="attemptLogin"
             android:text="@string/button_login"
             android:textColor="@android:color/white" />
 
