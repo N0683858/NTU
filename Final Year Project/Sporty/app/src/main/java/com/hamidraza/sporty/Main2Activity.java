@@ -93,6 +93,11 @@ public class Main2Activity extends AppCompatActivity {
         transaction.commit();
     }
 
+    public void clubCardClicked(View view)
+    {
+
+    }
+
     public void chatCardClicked(View view)
     {
         //Intent intent = new Intent(this, ChatRoom.class);

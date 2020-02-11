@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setBackgroundColor(getResources().getColor(R.color.baseColor));
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         drawer.setStatusBarBackgroundColor(getResources().getColor(R.color.baseColor));
+
     }
 
     @Override
