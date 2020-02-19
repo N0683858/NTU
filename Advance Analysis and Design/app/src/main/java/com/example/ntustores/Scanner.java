@@ -27,10 +27,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
-import org.apache.commons.io.IOUtils;
 
 public class Scanner extends AppCompatActivity {
 
+    private final String m_dbPostUrl = "http://stockmanagersystem.gearhostpreview.com/dbPost.php?nNumber=a&image=b";
     CodeScanner mCodeScanner;
     CodeScannerView mScannerView;
 
