@@ -28,14 +28,19 @@ namespace Containers {
 		struct Node;
 		Node* root = nullptr;
 
-		static Item* lookupRec(Key, Node*);
-		static bool insertRec(Key, Node*);
+		static bool isLeaf(Node*); // Check if node is a Leaf or not
+		static Item* lookupWorker(Key, Node*); // find a specific value using the key
+		static bool insertWorker(Key, Item, Node*&); // insert data into dictionary
 
-		void removeNodeWorker(Key, Node*);
-		void deepDelete(Node);
-		static Node* deepCopy(Node*);
+		bool removeNodeWorker(Key, Node*&); // remove worker function 
+		void deepDelete(Node*); // deletes everything 
+		static Node* deepCopy(Node*); // makes an identical copy
+		Node* detachNode(Node*&);
 	};
 
+//______________________________________Definition_____________________________________________//
+
+//---------- Node ----------//
 	template <typename Key, typename Item>
 	struct Dictionary<Key, Item>::Node
 	{
@@ -43,7 +48,8 @@ namespace Containers {
 		Item item;
 		Node* child;
 
-		Node(key k, item i)
+		template <typename Key, typename Item>
+		Node<Key, Item>::Node(Key k, Item i)
 		{
 			key = k;
 			item = i;
@@ -53,85 +59,206 @@ namespace Containers {
 		}
 	};
 
+	//---------- Copy Constructor ----------//
 	template<typename Key, typename Item>
-	Dictionary<Key, Item>::Dictionary(const Dictionary&)
+	Dictionary<Key, Item>::Dictionary(const Dictionary& original)
 	{
-
+		this->root = deepCopy(original.root);
 	}
 
 
-	//------- Copy Assignment Operator ----------//
+	//---------- Copy Assignment Operator ----------//
 	template<typename Key, typename Item>
 	Dictionary<Key, Item>& Dictionary<Key, Item>::operator=(const Dictionary& original)
 	{
-		// TODO: insert return statement here
+		if (this == &original)
+		{
+			return *this;
+		}
+		else
+		{
+			this->deepDelete(root);
+			this->root = deepCopy(original.root);
+			return *this;
+		}
 	}
 
-	////-------- Move Constructor ---------//
+	//-------- Move Constructor ---------//
 	template<typename Key, typename Item>
-	Dictionary<Key, Item>::Dictionary(Dictionary&&)
+	Dictionary<Key, Item>::Dictionary(Dictionary&& original)
 	{
+		this->root = original.root;
+		original.root = nullptr;
 	}
 
 	//---------- Move Assignement Operator ----------//
 	template<typename Key, typename Item>
 	Dictionary<Key, Item>& Dictionary<Key, Item>::operator=(Dictionary&& original)
 	{
-		// TODO: insert return statement here
+		if (this != &original)
+		{
+			deepDelete(this->root);
+			this->root = original.root;
+			original.root = nullptr;
+		}
+
+		return *this;
 	}
 
-	// insert() //
+	//---------- insert() ----------//
 	template<typename Key, typename Item>
-	bool Dictionary<Key, Item>::insert(Key, Item)
+	bool Dictionary<Key, Item>::insert(Key k, Item i)
 	{
-		return false;
+		return insertWorker(k, i, root);
 	}
 
-	// lookup() //
+	//---------- lookup() ----------//
 	template<typename Key, typename Item>
-	Item* Dictionary<Key, Item>::lookup(Key)
+	Item* Dictionary<Key, Item>::lookup(Key soughtKey)
 	{
-		return NULL;
+		return lookupWorker(soughtKey, root);
 	}
 
-	// remove() //
+	//---------- remove() ----------//
 	template<typename Key, typename Item>
-	bool Dictionary<Key, Item>::remove(Key)
+	bool Dictionary<Key, Item>::remove(Key k)
 	{
-		return false;
+		return removeNodeWorker(k, root);
 	}
 
-	// Deconstructor //
+	//---------- Deconstructor ----------//
 	template<typename Key, typename Item>
 	Dictionary<Key, Item>::~Dictionary()
 	{
+		deepDelete(root);
 	}
 
+	//---------- isLeaf() ----------//
 	template<typename Key, typename Item>
-	Item* Dictionary<Key, Item>::lookupRec(Key, Node*)
+	static bool Dictionary<Key, Item>::isLeaf(Node* n)
 	{
-		return NULL;
+		return n == nullptr;
 	}
 
+	//---------- lookup() worker ----------//
 	template<typename Key, typename Item>
-	bool Dictionary<Key, Item>::insertRec(Key, Node*)
+	Item* Dictionary<Key, Item>::lookupWorker(Key soughtKey, Node* currentNode)
 	{
+		if (isLeaf(currentNode))
+		{
+			return nullptr;
+		}
+		else
+		{
+			if (soughtKey != currentNode->key)
+			{
+				return lookupWorker(soughtKey, currentNode->child);
+			}
+			else
+			{
+				return &currentNode->item;
+			}
+		}
+	}
+
+	//---------- insert() worker ----------//
+	template<typename Key, typename Item>
+	bool Dictionary<Key, Item>::insertWorker(Key k, Item i, Node*& current)
+	{
+		if (isLeaf(current))
+		{
+			current = new Node(k, i);
+			retuen true;
+		}
+		else if (k == current->key)
+		{
+			current->item = i;
+		}
+		else 
+		{
+			insertWorker(k, i, current->child);
+		}
 		return false;
 	}
 
+	//---------- remove() node worker ----------//
 	template<typename Key, typename Item>
-	void Dictionary<Key, Item>::removeNodeWorker(Key, Node*)
+	bool Dictionary<Key, Item>::removeNodeWorker(Key k, Node*& current)
 	{
+		if (k != current->key)
+		{
+			if (isLeaf(current))
+			{
+				return false;
+			}
+			else
+			{
+				removeNodeWorker(k, current->child);
+			}
+		}
+		else
+		{
+			if (isLeaf(current->child))
+			{
+				delete current;
+				current = nullptr;
+			}
+			else
+			{
+				Node* newNode = current->child;
+				delete current;
+				current = newNode;
+			}
+
+			/*Node* newNode = detachNode(current->child);
+			Node* newNode = current->child;
+			delete current;
+			current = newNode;*/
+			return true;
+		}
 	}
 
-	template<typename Key, typename Item>
-	void Dictionary<Key, Item>::deepDelete(Node)
+	//---------- detachNode() ----------//
+	/*template<typename Key, typename Item>
+	Dictionary<Key, Item>::Node* Dictionary<Key, Item>::detachNode(Node*& node)
 	{
+		if (isLeaf(node->child))
+		{
+			Node* copy = new Node(node->key, node->item);
+			removeNode(node->key);
+			return copy;
+		}
+		else
+		{
+			detachNode(node->child);
+		}
+	}*/
+
+	//---------- Deep delete ----------//
+	template<typename Key, typename Item>
+	void Dictionary<Key, Item>::deepDelete(Node* current)
+	{
+		if (!isLeaf(current))
+		{
+			deepDelete(current->child);
+			delete current;
+		}
 	}
 
+	//---------- Deep copy ----------//
 	template<typename Key, typename Item>
-	Dictionary<Key, Item>::Node* Dictionary<Key, Item>::deepCopy(Node*)
+	Dictionary<Key, Item>::Node* Dictionary<Key, Item>::deepCopy(Node* original)
 	{
-		return NULL;
+		if (!isLeaf(original))
+		{
+			Node* newNode = new Node(original->key, original->item);
+			newNode->child = deepCopy(original->child);
+			return newNode;
+		}
+		else
+		{
+			return nullptr;
+		}
 	}
+	
 }
