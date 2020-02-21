@@ -13,6 +13,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -58,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         drawer.setStatusBarBackgroundColor(getResources().getColor(R.color.baseColor));
 
+        // Fire-base
+        FirebaseDatabase mFirebaseDatabse = FirebaseDatabase.getInstance();
+        DatabaseReference mDatabaseReference = mFirebaseDatabse.getReference();
+
+        mDatabaseReference.child("NodeName").child("childName").setValue("Data");
+        mDatabaseReference.child("NodeName").child("childName").setValue("newData");
+        mDatabaseReference.child("NodeName").child("childName2").setValue("Data2");
+        mDatabaseReference.child("NodeName2").child("childName").setValue("Data");
     }
 
     @Override
