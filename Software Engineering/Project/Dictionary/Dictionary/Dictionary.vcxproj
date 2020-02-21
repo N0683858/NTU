@@ -123,9 +123,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\dictionary-testing\keyitemgenerator.cpp" />
+    <ClCompile Include="..\..\dictionary-testing\main.cpp" />
+    <ClCompile Include="BasketOfNames.cpp" />
     <ClCompile Include="dictionary.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\dictionary-testing\keyitemgenerator.h" />
+    <ClInclude Include="BasketOfNames.h" />
     <ClInclude Include="dictionary.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
