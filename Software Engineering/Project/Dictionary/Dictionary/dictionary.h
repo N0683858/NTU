@@ -21,6 +21,9 @@ namespace Containers {
 		bool insert(Key, Item);
 		Item* lookup(Key);
 		bool remove(Key);
+		template <typename F>
+		void removeIf(F);
+
 
 		~Dictionary(); // Deconstructor
 
@@ -35,7 +38,9 @@ namespace Containers {
 		bool removeNodeWorker(Key, Node*&); // remove worker function 
 		void deepDelete(Node*); // deletes everything 
 		static Node* deepCopy(Node*); // makes an identical copy
-		Node* detachNode(Node*&);
+
+		template <typename F>
+		void removeIfWorker(F, Node*&);
 	};
 
 //______________________________________Definition_____________________________________________//
@@ -261,4 +266,28 @@ namespace Containers {
 		}
 	}
 	
+	//---------- removeIf() ----------//
+	template<typename Key, typename Item>
+	template<typename F>
+	void Dictionary<Key, Item>::removeIf(F function)
+	{
+		removeIf(function, root);
+	}
+
+	//---------- removeIf() worker ----------//
+	template<typename Key, typename Item>
+	template<typename F>
+	void Dictionary<Key, Item>::removeIfWorker(F function, Node*& current)
+	{
+		if (!isLeaf(current))
+		{
+			if (function(current->key))
+			{
+				remove(current->key);
+			}
+
+			removeIfWorker(function, current->child);
+		}
+	}
+
 }
