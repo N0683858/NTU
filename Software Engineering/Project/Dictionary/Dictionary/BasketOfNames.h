@@ -13,16 +13,13 @@ public:
 	BasketOfNames();
 	void insert(Name, nameToWest);
 	nameToWest getPersonToWest(Name);
-	void remove(Name);
+	//void remove(Name);
 	void readFile_intoMap(std::string);
 	void readResultData_intoList();
-
-
+	
 private:
 	std::unordered_map<Name, nameToWest> listOfNames;
 	std::list<std::string> resultData;
-
-
 };
 
 //BasketOfNames<Name, nameToWest>::BasketOfNames()

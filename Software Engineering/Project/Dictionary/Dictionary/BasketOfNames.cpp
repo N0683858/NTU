@@ -8,7 +8,7 @@ using namespace std;
 
 BasketOfNames::BasketOfNames()
 {
-	readFile_intoMap("");
+	readFile_intoMap("");//path to text file
 }
 
 void BasketOfNames::insert(Name name, nameToWest westernName)
@@ -16,15 +16,25 @@ void BasketOfNames::insert(Name name, nameToWest westernName)
 	listOfNames[name] = westernName;
 }
 
-BasketOfNames::nameToWest BasketOfNames::getPersonToWest(Name)
+BasketOfNames::nameToWest BasketOfNames::getPersonToWest(Name findName)
 {
-	return NULL;
+	unordered_map<string, string>::const_iterator got = listOfNames.find(findName);
+
+	if (got == listOfNames.end()) // not found
+	{
+		return NULL;
+	}	
+	else
+	{
+		return got->second; //get value
+	}
+	
 }
 
-void BasketOfNames::remove(Name)
-{
-
-}
+//void BasketOfNames::remove(Name)
+//{
+//
+//}
 
 void BasketOfNames::readFile_intoMap(std::string file)
 {
@@ -48,6 +58,13 @@ void BasketOfNames::readFile_intoMap(std::string file)
 	{
 		cout << "Error opening file!" << endl;
 	}
+}
+
+void BasketOfNames::readResultData_intoList()
+{
+	Name startingName = listOfNames.begin()->first;
+	nameToWest startingNameValue = listOfNames.begin()->second;
+	
 }
 
 
