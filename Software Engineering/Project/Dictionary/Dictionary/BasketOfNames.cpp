@@ -11,12 +11,12 @@ BasketOfNames::BasketOfNames()
 	readFile_intoMap("");//path to text file
 }
 
-void BasketOfNames::insert(Name name, nameToWest westernName)
+void BasketOfNames::insert(Name name, Neighbour westernName)
 {
 	listOfNames[name] = westernName;
 }
 
-BasketOfNames::nameToWest BasketOfNames::getPersonToWest(Name findName)
+BasketOfNames::Neighbour BasketOfNames::getPersonToWest(Name findName)
 {
 	unordered_map<string, string>::const_iterator got = listOfNames.find(findName);
 
@@ -39,7 +39,7 @@ BasketOfNames::nameToWest BasketOfNames::getPersonToWest(Name findName)
 void BasketOfNames::readFile_intoMap(std::string file)
 {
 	Name tempName;
-	nameToWest tempWestName;
+	Neighbour tempWestName;
 	string line;
 
 	ifstream namesDataFile(file);
@@ -63,7 +63,7 @@ void BasketOfNames::readFile_intoMap(std::string file)
 void BasketOfNames::readResultData_intoList()
 {
 	Name startingName = listOfNames.begin()->first;
-	nameToWest startingNameValue = listOfNames.begin()->second;
+	Neighbour startingNameValue = listOfNames.begin()->second;
 	
 }
 
