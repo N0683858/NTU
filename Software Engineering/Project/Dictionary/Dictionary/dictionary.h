@@ -2,12 +2,12 @@
 #include <string>
 
 namespace Containers {
-	template <typename Key, typename Item>
+	template <typename key, typename item>
 	class Dictionary
 	{
 	public:
-		//using Key = std::string;// ... must support at least std::string
-		//using Item = std::string;// ... must support at least std::string
+		using Key = key;
+		using Item = item;
 
 		// Constructor //
 		Dictionary() = default; // defult constructor
@@ -53,14 +53,12 @@ namespace Containers {
 		Item item;
 		Node* child;
 
-		template <typename Key, typename Item>
-		Node<Key, Item>::Node(Key k, Item i)
+		Node(Key k, Item i)
 		{
 			key = k;
 			item = i;
 
 			child = nullptr;
-
 		}
 	};
 
@@ -140,7 +138,7 @@ namespace Containers {
 
 	//---------- isLeaf() ----------//
 	template<typename Key, typename Item>
-	static bool Dictionary<Key, Item>::isLeaf(Node* n)
+	bool Dictionary<Key, Item>::isLeaf(Node* n)
 	{
 		return n == nullptr;
 	}
@@ -173,7 +171,7 @@ namespace Containers {
 		if (isLeaf(current))
 		{
 			current = new Node(k, i);
-			retuen true;
+			return true;
 		}
 		else if (k == current->key)
 		{
@@ -252,7 +250,7 @@ namespace Containers {
 
 	//---------- Deep copy ----------//
 	template<typename Key, typename Item>
-	Dictionary<Key, Item>::Node* Dictionary<Key, Item>::deepCopy(Node* original)
+	typename Dictionary<Key, Item>::Node* Dictionary<Key, Item>::deepCopy(Node* original)
 	{
 		if (!isLeaf(original))
 		{

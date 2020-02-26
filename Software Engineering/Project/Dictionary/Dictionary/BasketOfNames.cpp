@@ -6,40 +6,40 @@
 #include <sstream>
 using namespace std;
 
-BasketOfNames::BasketOfNames()
+BasketOfNames::BasketOfNames(string fileName)
 {
-	readFile_intoMap("");//path to text file
+	readFile_intoMap(fileName);
 }
 
-void BasketOfNames::insert(Name name, Neighbour westernName)
-{
-	listOfNames[name] = westernName;
-}
 
-BasketOfNames::Neighbour BasketOfNames::getPersonToWest(Name findName)
+bool BasketOfNames::hasNeighbour(Name findName, unordered_map<string, string> mapToSearch)
 {
-	unordered_map<string, string>::const_iterator got = listOfNames.find(findName);
+	unordered_map<string, string>::const_iterator got = mapToSearch.find(findName);
 
-	if (got == listOfNames.end()) // not found
+	if (got == mapToSearch.end()) // not found
 	{
-		return NULL;
+		return false;
 	}	
-	else
+	else // value found
 	{
-		return got->second; //get value
+		return true;
 	}
-	
 }
 
-//void BasketOfNames::remove(Name)
-//{
-//
-//}
+BasketOfNames::Neighbour BasketOfNames::findNeighbour(Name findName, unordered_map<string, string> mapToSearch)
+{
+	unordered_map<string, string>::const_iterator got = mapToSearch.find(findName);
+
+	if (got != mapToSearch.end())
+	{
+		return got->second;
+	}
+}
 
 void BasketOfNames::readFile_intoMap(std::string file)
 {
 	Name tempName;
-	Neighbour tempWestName;
+	Neighbour tempNeiName;
 	string line;
 
 	ifstream namesDataFile(file);
@@ -47,24 +47,66 @@ void BasketOfNames::readFile_intoMap(std::string file)
 	{
 		while (getline(namesDataFile, line))
 		{
+
 			stringstream ss(line);
 			getline(ss, tempName, ',');
-			getline(ss, tempWestName, ',');
+			getline(ss, tempNeiName, ',');
 
-			insert(tempName, tempWestName);
+			WesternNames.insert(make_pair(tempName, tempNeiName));// storing the name and then the western neighbour
+			EasternNames.insert(make_pair(tempNeiName, tempName));// storing name and eastern neighbour
+
+
+
 		}
+		readResultData_intoList();
 	}
 	else
 	{
 		cout << "Error opening file!" << endl;
 	}
+	
 }
 
 void BasketOfNames::readResultData_intoList()
 {
-	Name startingName = listOfNames.begin()->first;
-	Neighbour startingNameValue = listOfNames.begin()->second;
-	
+	Name tempName = WesternNames.begin()->first;
+	resultData.push_back(tempName); // starting name
+
+	for (auto& it : WesternNames)
+	{
+		if (hasNeighbour(tempName, WesternNames))
+		{
+			resultData.push_back(findNeighbour(tempName, WesternNames)); // western neighbour
+			tempName = findNeighbour(tempName, WesternNames);
+		}
+	}
+
+	for (auto& it : EasternNames)
+	{
+		if (hasNeighbour(tempName, EasternNames)) // has neighbour
+		{
+			tempName = findNeighbour(tempName, EasternNames);
+		}
+	}
+	resultData.push_front(tempName);
+
+
+	for (auto i : resultData)
+	{
+		std::cout << i << "\n";
+	}
 }
+
+//
+//int main(int argc, char** argv) {
+//	string file;
+//	cout << "Enter absolute file path:";
+//	cin >> file;
+//
+//	//BasketOfNames test = BasketOfNames("C:/Basket_of_Names-test_data/20/input-papers-20.txt");
+//	BasketOfNames test = BasketOfNames(file);
+//
+//	return 0;
+//}
 
 

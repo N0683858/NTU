@@ -8,16 +8,19 @@ class BasketOfNames
 {
 public:
 	using Name = std::string;
-	using neighbour = std::string;
+	using Neighbour = std::string;
 
-	BasketOfNames();
-	void insert(Name, neighbour);
-	neighbour getPersonToWest(Name);
-	//void remove(Name);
-	void readFile_intoMap(std::string);
-	void readResultData_intoList();
+	BasketOfNames(std::string);
 	
 private:
-	std::unordered_map<Name, neighbour> listOfNames;
+	std::unordered_map<Name, Neighbour> WesternNames;
+	std::unordered_map<Name, Neighbour> EasternNames;
+
 	std::list<std::string> resultData;
+
+	void readResultData_intoList();
+	//void insert(Name, Neighbour, std::unordered_map<Name, Neighbour>);
+	bool hasNeighbour(Name, std::unordered_map<std::string, std::string>);
+	Neighbour findNeighbour(Name, std::unordered_map<std::string, std::string>);
+	void readFile_intoMap(std::string);
 };
