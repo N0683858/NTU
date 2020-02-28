@@ -31,12 +31,12 @@
 //    *   KeyItemGenerator gen = KeyItemGenerator(seed);
 //   */
 //
-//   map<int,string> dict = {};
+//   map<int,string> dict = {}; 
 //
 //   for (unsigned long long int i = 0; i < n; ++i)
 //   {
 //       dict.insert(make_pair(gen.randomKey(),gen.randomItem()));
-//       /* Note: std::map::insert() differs slightly from BST::insert(),
+//       /* Note: std::map::insert() differs slightly from BST::insert(), 
 //        * in that it does not overwrite the item if the key already exists.
 //        */
 //   }
