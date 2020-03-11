@@ -78,24 +78,27 @@ def ReadingCSV(file):
 # Order Based Agent
 #######################################################
 import nltk
+import pickle
 v = """
-lettuces => {}
-cabbages => {}
-mustards => {}
-potatoes => {}
-onions => {}
-carrots => {}
-beans => {}
-peas => {}
-field1 => f1
-field2 => f2
-field3 => f3
-field4 => f4
-be_in => {}
+akalai => {}
+katarina => {}
+masteryi => {}
+guren => {}
+ezreal => {}
+jungle => jung
+adc => adc
+support => sup
+top => top
+mid => mid
+plays => {}
 """
-folval = nltk.Valuation.fromstring(v)
+
+folval = pickle.load(open('folval.txt','rb'))
 grammar_file = 'simple-sem.fcfg'
 objectCounter = 0
+currentObjects = max(folval["plays"])[0].replace('o','')
+if len(currentObjects)>0:
+    objectCounter=int(currentObjects)+1
 #######################################################
 # Welcome user
 #######################################################
@@ -140,42 +143,68 @@ while True:
             else:
                 print('No, that is a',class_names[np.argmax(p[0])])
         elif cmd == 5: # I will plant x in y   
-            o = 'o' + str(objectCounter)
-            objectCounter += 1
-            folval['o' + o] = o #insert constant
-            if len(folval[params[1]]) == 1: #clean up if necessary
-                if ('',) in folval[params[1]]:
-                    folval[params[1]].clear()
-            folval[params[1]].add((o,)) #insert type of plant information
-            if len(folval["be_in"]) == 1: #clean up if necessary
-                if ('',) in folval["be_in"]:
-                    folval["be_in"].clear()
-            folval["be_in"].add((o, folval[params[2]])) #insert location
+            if params[1] not in folval or params[2] not in folval:
+                print("The champion or the lane entered does not exist!")
+            else:
+                o = 'o' + str(objectCounter)
+                objectCounter += 1
+                folval['o' + o] = o #insert constant
+                if len(folval[params[1]]) == 1: #clean up if necessary
+                    if ('',) in folval[params[1]]:
+                        folval[params[1]].clear()
+                folval[params[1]].add((o,)) #insert type of plant information
+                if len(folval["plays"]) == 1: #clean up if necessary
+                    if ('',) in folval["plays"]:
+                        folval["plays"].clear()
+                folval["plays"].add((o, folval[params[2]])) #insert location
+                pickle.dump(folval,open('folval.txt','wb'))
         elif cmd == 6: #Are there any x in y
-            g = nltk.Assignment(folval.domain)
-            m = nltk.Model(folval.domain, folval)
-            sent = 'some ' + params[1] + ' are_in ' + params[2]
-            results = nltk.evaluate_sents([sent], grammar_file, m, g)[0][0]
-            if results[2] == True:
-                print("Yes.")
+            if params[1] not in folval or params[2] not in folval:
+                print("The champion or the lane entered does not exist!")
             else:
-                print("No.")
+                g = nltk.Assignment(folval.domain)
+                m = nltk.Model(folval.domain, folval)
+                sent = 'some ' + params[1] + ' plays ' + params[2]
+                results = nltk.evaluate_sents([sent], grammar_file, m, g)[0][0]
+                if results[2] == True:
+                    print("Yes.")
+                else:
+                    print("No.")
         elif cmd == 7: # Are all x in y
-            g = nltk.Assignment(folval.domain)
-            m = nltk.Model(folval.domain, folval)
-            sent = 'all ' + params[1] + ' are_in ' + params[2]
-            results = nltk.evaluate_sents([sent], grammar_file, m, g)[0][0]
-            if results[2] == True:
-                print("Yes.")
+            if params[1] not in folval or params[2] not in folval:
+                print("The champion or the lane entered does not exist!")
             else:
-                print("No.")
-        elif cmd == 7: # Which plants are in ...
-            g = nltk.Assignment(folval.domain)
-            m = nltk.Model(folval.domain, folval)
-            e = nltk.Expression.fromstring("be_in(x," + params[1] + ")")
-            sat = m.satisfiers(e, "x", g)
-            if len(sat) == 0:
-                print("None.")
+                g = nltk.Assignment(folval.domain)
+                m = nltk.Model(folval.domain, folval)
+                sent = 'all ' + params[1] + ' plays ' + params[2]
+                results = nltk.evaluate_sents([sent], grammar_file, m, g)[0][0]
+                if results[2] == True:
+                    print("Yes.")
+                else:
+                    print("No.")
+        elif cmd == 8: # Which plants are in ...
+            if params[1] not in folval:
+                print("The lane entered does not exist!")
+            else:
+                g = nltk.Assignment(folval.domain)
+                m = nltk.Model(folval.domain, folval)
+                e = nltk.Expression.fromstring("plays(x," + params[1] + ")")
+                sat = m.satisfiers(e, "x", g)
+                if len(sat) == 0:
+                    print("None.")
+                else:
+                    #find satisfying objects in the valuation dictionary,
+                    #and print their type names
+                    sol = folval.values()
+                    for so in sat:
+                        for k, v in folval.items():
+                            if len(v) > 0:
+                                vl = list(v)
+                                if len(vl[0]) == 1:
+                                    for i in vl:
+                                        if i[0] == so:
+                                            print(k)
+                                            break
         elif cmd == 99:
             # print("I did not get that, please try again.")
             Question, Answer = ReadingCSV('Q&A_Pairs.txt')

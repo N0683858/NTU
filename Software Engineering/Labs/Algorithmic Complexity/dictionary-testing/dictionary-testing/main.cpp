@@ -59,8 +59,8 @@ milliseconds timingTest_map(unsigned long long int n, unsigned int dicSize)
 
 int main()
 {
-    const unsigned long long int n = 1500000;
-	int dicSize = 1000000;
+    const unsigned long long int n = 2800000;
+	int dicSize = 12200000;
 
     milliseconds timeTaken = timingTest_map(n, dicSize);
 
