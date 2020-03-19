@@ -269,7 +269,7 @@ namespace Containers {
 	template<typename F>
 	void Dictionary<Key, Item>::removeIf(F function)
 	{
-		removeIf(function, root);
+		removeIfWorker(function, root);
 	}
 
 	//---------- removeIf() worker ----------//

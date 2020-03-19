@@ -7,6 +7,20 @@
 <category><pattern> IS * A CHAMPION </pattern>
   <template>#4$<star index="1"/></template></category>
 
+  <!-- FOL model interface -->
+<category> <pattern> * PLAYS * </pattern>
+ <template>#5$<star index="1"/>$<star index="2"/></template></category>
+
+<category> <pattern> CAN * PLAY * </pattern>
+ <template>#6$<star index="1"/>$<star index="2"/></template></category>
+
+<category> <pattern> CAN * ONLY PLAY * </pattern>
+ <template>#7$<star index="1"/>$<star index="2"/></template></category>
+ 
+<category> <pattern> WHICH CHAMPIONS CAN PLAY * </pattern>
+ <template>#8$<star index="1"/></template></category>
+
+
 <!-- Greetings and Politeness -->
 <category> <pattern> HELLO </pattern>
   <template>Hello! What is your name?</template> </category>
