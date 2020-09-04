@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/nav_bookmarks"
+        android:icon="@drawable/ic_baseline_bookmarks_24"
+        android:title="@string/bookmarks" />
+    <item
+        android:id="@+id/nav_Attendance"
+        android:icon="@drawable/ic_qr_code"
+        android:title="@string/attendance" />
+    <item
+        android:id="@+id/nav_campusMap"
+        android:icon="@drawable/ic_baseline_map_24"
+        android:title="@string/campus_map" />
+
+    <item android:title="@string/more">
+        <menu>
+            <item android:title="@string/settigns"
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_baseline_settings_24"/>
+
+            <item android:title="@string/logout"
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_baseline_exit_24"/>
+        </menu>
+    </item>
+
+<!--    <item android:title="@string/storage">-->
+<!--        <menu>-->
+<!--            <item android:title="@string/home"-->
+<!--                android:id="@+id/nav_home"-->
+<!--                android:icon="@drawable/ic_baseline_home_24"/>-->
+<!--            <item android:title="@string/bookmarks"-->
+<!--                android:id="@+id/nav_bookmarks"-->
+<!--                android:icon="@drawable/ic_baseline_bookmarks_24"/>-->
+<!--            <item android:title="@string/search"-->
+<!--                android:id="@+id/nav_search"-->
+<!--                android:icon="@drawable/ic_baseline_search_24"/>-->
+<!--            <item android:title="@string/attendance"-->
+<!--                android:id="@+id/nav_qr_code"-->
+<!--                android:icon="@drawable/ic_qr_code"/>-->
+<!--            <item android:title="@string/campus_map"-->
+<!--                android:id="@+id/nav_campus_map"-->
+<!--                android:icon="@drawable/ic_baseline_map_24"/>-->
+<!--        </menu>-->
+<!--    </item>-->
+
+<!--    <item android:title="@string/app">-->
+<!--        <menu>-->
+<!--            <item android:title="@string/settigns"-->
+<!--                android:id="@+id/nav_settings"-->
+<!--                android:icon="@drawable/ic_baseline_settings_24"/>-->
+<!--            <item android:title="@string/logout"-->
+<!--                android:id="@+id/nav_logout"-->
+<!--                android:icon="@drawable/ic_baseline_exit_24"/>-->
+<!--        </menu>-->
+<!--    </item>-->
+
+</menu>

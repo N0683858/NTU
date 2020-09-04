@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#e8005A</color>
+    <color name="colorPrimaryDark">#af0031</color>
+    <color name="colorPrimaryLight">#ff5785</color>
+    <color name="colorAccent">#004877</color>
+    <color name="ntuColorAccent">#004877</color>
+    <color name="ntuColorAccentLight">#4472a6</color>
+    <color name="baseColor">#515151</color>
+    <color name="lightGray">#E4E4E4</color>
+    <color name="white">#fcfcfc</color>
+    <color name="techColor">#009ADD</color>
+    <color name="purple">#6200EE</color>
+    <color name="darkPurplr">#3700B3</color>
+    <color name="skyBLue">#03DAC5</color>
+</resources>

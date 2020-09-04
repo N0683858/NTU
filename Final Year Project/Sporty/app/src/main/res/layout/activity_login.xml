@@ -24,9 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
+        android:paddingLeft="30dp"
         android:paddingTop="10dp"
-        android:paddingRight="10dp"
+        android:paddingRight="30dp"
         android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:endIconMode="password_toggle">
 
             <EditText
                 android:id="@+id/register_password"
@@ -76,9 +77,9 @@
         android:layout_marginBottom="32dp"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
+        android:paddingLeft="30dp"
         android:paddingTop="10dp"
-        android:paddingRight="10dp"
+        android:paddingRight="30dp"
         android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
