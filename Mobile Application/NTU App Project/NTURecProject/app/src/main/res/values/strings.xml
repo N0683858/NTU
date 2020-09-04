@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">NTURec</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_confirm_password">Confirm Password</string>
+    <string name="button_register">Register</string>
+    <string name="button_sign_in">Sign in</string>
+    <string name="button_sign_up">Sign up</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">Password too short or does not match</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="home">Home</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="search">Search</string>
+    <string name="attendance">Attendance</string>
+    <string name="campus_map">Campus Map</string>
+    <string name="app">App</string>
+    <string name="settigns">Settigns</string>
+    <string name="logout">Logout</string>
+    <string name="storage">STORAGE</string>
+
+    <string name="openNavDrawer">Navigation Drawer Open</string>
+    <string name="closeNavDrawer">Navigation Drawer Close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="more">More</string>
+    <string name="to_register">To register your attendance, scan the QR code for the event</string>
+    <string name="log_out">By logging out, you will be taken to the sign in page</string>
+    <string name="scan">Scan</string>
+</resources>

@@ -1,12 +1,18 @@
 package com.example.nturecruitment;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 
+import com.example.nturecruitment.ui.home.myViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,12 +26,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
+import android.view.ViewGroup;
+
+import static android.content.res.ColorStateList.*;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private RecyclerView mRecyclerView;
+
+    private FirebaseRecyclerOptions<JobsOppModel> jobOptions;
+    private FirebaseRecyclerAdapter<JobsOppModel, myViewHolder> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.white)));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,19 +71,58 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        // toolbar.setTitle("Recruitment");
-        toolbar.setBackgroundColor(getResources().getColor(R.color.baseColor));
+        toolbar.setTitle("Job Opportunities");
+        toolbar.setBackgroundColor(getResources().getColor(R.color.ntuColorAccent));
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-        drawer.setStatusBarBackgroundColor(getResources().getColor(R.color.baseColor));
+        drawer.setStatusBarBackgroundColor(getResources().getColor(R.color.ntuColorAccent));
 
-        // Fire-base
-        FirebaseDatabase mFirebaseDatabse = FirebaseDatabase.getInstance();
-        DatabaseReference mDatabaseReference = mFirebaseDatabse.getReference();
+//        // Fire-base
+//        FirebaseDatabase mFirebaseDatabse = FirebaseDatabase.getInstance();
+//        DatabaseReference mDatabaseReference = mFirebaseDatabse.getReference().child("Jobs Opp");
+//
+//        mRecyclerView = findViewById(R.id.recyclerView);
+//        mRecyclerView.setHasFixedSize(true);
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        jobOptions = new FirebaseRecyclerOptions.Builder<JobsOppModel>().setQuery(mDatabaseReference,JobsOppModel.class).build();
+//        adapter = new FirebaseRecyclerAdapter<JobsOppModel, myViewHolder>(jobOptions) {
+//            @Override
+//            protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull JobsOppModel model) {
+//                holder.textViewTitle.setText("" + model.getJob_title());
+//                holder.textViewCompName.setText(""+model.getCompany_name());
+//                holder.textViewJobDesc.setText("" + model.getJob_desc());
+//                holder.textViewLocation.setText("" + model.getLocation());
+//
+//            }
+//
+//            @NonNull
+//            @Override
+//            public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//
+//              View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_view_layout,parent,false);
+//                return new myViewHolder(v);
+//            }
+//        };
+//
+//        adapter.startListening();
+//        mRecyclerView.setAdapter(adapter);
 
-        mDatabaseReference.child("NodeName").child("childName").setValue("Data");
-        mDatabaseReference.child("NodeName").child("childName").setValue("newData");
-        mDatabaseReference.child("NodeName").child("childName2").setValue("Data2");
-        mDatabaseReference.child("NodeName2").child("childName").setValue("Data");
+//        // Fire-base
+//        FirebaseDatabase mFirebaseDatabse = FirebaseDatabase.getInstance();
+//        DatabaseReference mDatabaseReference = mFirebaseDatabse.getReference();
+
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech").child("job_title").setValue("IT Technician");
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech").child("company_name").setValue("NTU");
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech").child("job_desc").setValue("IT Technician is a wonder oppuertinaf adfa ddsdfs sdfssssssff sssdfsdfsdfwqerdf");
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech").child("location").setValue("NTU, NO12 5RF");
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech2").child("job_title").setValue("IT Technician2");
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech2").child("company_name").setValue("NTU");
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech2").child("job_desc").setValue("IT Technician is a wonder oppuertinaf adfa ddsdfs sdfssssssff sssdfsdfsdfwqerdf");
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech2").child("location").setValue("NTU, NO12 5RF");
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech3").child("job_title").setValue("IT Technician2");
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech3").child("company_name").setValue("NTU");
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech3").child("job_desc").setValue("IT Technician is a wonder oppuertinaf adfa ddsdfs sdfssssssff sssdfsdfsdfwqerdf");
+//        mDatabaseReference.child("Jobs Opp").child("IT Tech3").child("location").setValue("NTU, NO12 5RF");
     }
 
     @Override
