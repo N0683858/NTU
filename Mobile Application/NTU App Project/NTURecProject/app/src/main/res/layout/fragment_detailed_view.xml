@@ -15,17 +15,18 @@
             android:id="@+id/display_imgView"
             android:layout_width="0dp"
             android:layout_height="300dp"
-            android:src="@android:drawable/ic_menu_gallery"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_baseline_insert_photo_24"
+ />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
             android:layout_width="409dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
-            android:background="@color/lightGray"
+
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -78,7 +79,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/display_location_tv" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/add_bookmark_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
@@ -91,13 +92,52 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.9" />
 
+            <ImageButton
+                android:id="@+id/remove_bookmark_btn"
+                android:layout_width="93dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/roundcorner"
+                android:src="@drawable/ic_baseline_bookmarks_24"
+                android:tint="@color/white"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.798"
+                app:layout_constraintStart_toEndOf="@+id/display_companyName_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="15dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toTopOf="@+id/display_title_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/del_job_btn"
+                android:layout_width="35dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="65dp"
+                android:background="@drawable/roundcorner"
+                android:src="@drawable/ic_baseline_delete_forever_24"
+                android:tint="@color/white"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@+id/add_bookmark_btn"
+                app:layout_constraintStart_toEndOf="@+id/display_location_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="409dp"
             android:layout_height="wrap_content"
-            android:background="@color/lightGray"
+
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -55,19 +55,18 @@ public class HomeFragment extends Fragment {
         mFirebaseDatabse = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabse.getReference().child("Jobs Opp");
 
-        // Recycler View
+        //------------- Recycler View -------------//
         mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        // Dropdown list spinner
+        //------------- Dropdown list spinner -------------//
         dropdownOptions = getResources().getStringArray(R.array.dropdown_options);
         mMaterialSpinner = view.findViewById(R.id.material_spinner2);
         mMaterialSpinner.setHintAnimationEnabled(false);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, dropdownOptions);
         mMaterialSpinner.setAdapter(arrayAdapter);
         mMaterialSpinner.setSelection(0);
-
         //Loads all the data from the database and orders it by the title (Works)
         LoadData("","job_title");
 
@@ -78,9 +77,9 @@ public class HomeFragment extends Fragment {
                 if(materialSpinner.getSelectedItem().toString().equals("All Courses"))
                 {
                     // The toast message works
-                    Toast.makeText(getContext(), "all courses selected", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "all courses selected", Toast.LENGTH_SHORT).show();
 
-                    //This method doesn't run even though I've used the same method elsewhere
+                    //This method doesn't run even though I've used the same method elsewhere (above the code for this spinner)
                     LoadData("","job_title"); //Load data
                 }
 
@@ -96,7 +95,7 @@ public class HomeFragment extends Fragment {
         });
 
 
-        // Search input text
+        //------------- Search input text -------------//
         inputSearchTxt = view.findViewById(R.id.searchView);
 
 
@@ -124,6 +123,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //------------- Floating button -------------//
         mFloatingActionButton = view.findViewById(R.id.floating_btn);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -137,7 +137,7 @@ public class HomeFragment extends Fragment {
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Button Clicked!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Button Clicked!", Toast.LENGTH_SHORT).show();
                 AddNewEntryFragment addNewEntryFragment = new AddNewEntryFragment();
                 getFragmentManager().beginTransaction().replace(R.id.navHostFragment, addNewEntryFragment).addToBackStack(null).commit();
             }
@@ -146,6 +146,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    //------------- Load data method -------------//
     private void LoadData(String viewData, String sortBy)
     {
         Query query = mDatabaseReference.orderByChild(sortBy).startAt(viewData).endAt(viewData+"\uf8ff");
@@ -195,12 +196,5 @@ public class HomeFragment extends Fragment {
         adapter.startListening();
         mRecyclerView.setAdapter(adapter);
     }
-
-//    public void LogOut(View view)
-//    {
-//        mAuth.signOut();
-//        Intent intent = new Intent(getActivity(),SignIn.class);
-//        startActivity(intent);
-//    }
 
 }
